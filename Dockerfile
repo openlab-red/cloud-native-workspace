@@ -2,6 +2,7 @@ FROM registry.access.redhat.com/ubi8/ubi:latest
 
 RUN yum clean all \
     && yum install -y wget gcc zlib-devel zlib-devel \
+    && yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm 
     && yum install -y siege jq \
     && yum clean all
 
