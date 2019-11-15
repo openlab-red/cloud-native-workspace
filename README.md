@@ -1,1 +1,2 @@
-# cloud-native-workspace
+# Cloud Native Workspace for Eclipse Che
+
