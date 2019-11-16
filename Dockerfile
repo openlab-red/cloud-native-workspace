@@ -24,27 +24,20 @@ ENV GRAALVM_HOME=/usr/local/graalvm-ce-19.2.1
 
 RUN ${GRAALVM_HOME}/bin/gu install native-image
 
-RUN wget -O /tmp/mvn.tar.gz http://apache.tt.co.kr/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.tar.gz \
+RUN wget -O /tmp/mvn.tar.gz http://apache.uvigo.es/maven/maven-3/3.6.2/binaries/apache-maven-3.6.2-bin.tar.gz \
     && tar xzf /tmp/mvn.tar.gz -C /usr/local \
     && rm -rf /tmp/mvn.tar.gz \
-    && mkdir /usr/local/maven \
-    && mv apache-maven-3.6.2/ /usr/local/maven/ \
-    && alternatives --install /usr/bin/mvn mvn /usr/local/maven/apache-maven-3.6.2/bin/mvn 1
+    && alternatives --install /usr/bin/mvn mvn /usr/local/apache-maven-3.6.2/bin/mvn 1
 
 ENV PATH=/usr/local/maven/apache-maven-3.6.2/bin:${PATH}
 ENV MAVEN_OPTS="-Xmx4G -Xss128M -XX:MetaspaceSize=1G -XX:MaxMetaspaceSize=2G -XX:+CMSClassUnloadingEnabled"
 
 RUN wget -O /tmp/tkn.tar.gz https://github.com/tektoncd/cli/releases/download/v0.5.0/tkn_0.5.0_Linux_arm64.tar.gz \ 
-    && tar xvzf tkn.tar.gz -C /usr/local/bin \
-    && rm -fr /tmp/tkn.tar.gz
+    && tar xvzf /tmp/tkn.tar.gz -C /usr/local/bin \
+    && rm -fr /tmp/tkn.tar.gz \
+    && chmod a+x /usr/local/bin/tkn
 
-RUN wget -O /tmp/kn.tar.gz https://github.com/knative/client/releases/download/v0.10.0/kn-linux-amd64 \
-    && tar xvfz /tmp/kn.tar.gz -C /usr/local/bin \
-    && rm -fr /tmp/kn.tar.gz
+RUN wget -O /usr/local/bin/kn https://github.com/knative/client/releases/download/v0.10.0/kn-linux-amd64 \
+    && chmod a+x /usr/local/bin/kn
     
-
-RUN /bin/sh -c chown -R jboss /home/jboss/.m2
-
-USER jboss
-
-
+USER 1001
