@@ -1,5 +1,7 @@
 FROM quay.io/openshiftlabs/cloudnative-workspaces-quarkus:1.3
 
+USER root
+
 RUN wget -O /tmp/odo.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/odo/latest/odo-linux-amd64.tar.gz \
         && tar xfvz /tmp/odo.tar.gz -C /usr/local/bin \
 	&& chmod +x /usr/local/bin/odo \
@@ -35,3 +37,5 @@ RUN wget -O /tmp/tkn.tar.gz https://github.com/tektoncd/cli/releases/download/v0
 
 RUN wget -O /usr/local/bin/kn https://github.com/knative/client/releases/download/v0.10.0/kn-linux-amd64 \
     && chmod a+x /usr/local/bin/kn
+
+USER jboss 
