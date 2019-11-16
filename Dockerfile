@@ -1,21 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi:latest
-
-RUN yum clean all \
-    && yum install -y wget gcc zlib-devel zlib-devel \
-    && yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm \ 
-    && yum install -y jq \
-    && yum clean all
-
-ENV RUN_GROUP=jboss \
-    RUN_USER=jboss \
-    RUN_USER_ID=185
-
-USER root
-
-RUN groupadd ${RUN_GROUP}
-RUN useradd -r -m -u ${RUN_USER_ID} -G 0,${RUN_GROUP} ${RUN_USER}
-RUN mkdir -p /projects
-RUN chown -R ${RUN_USER_ID}:0 /projects \
+FROM quay.io/openshiftlabs/cloudnative-workspaces-quarkus:1.3
 
 RUN wget -O /tmp/odo.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/odo/latest/odo-linux-amd64.tar.gz \
         && tar xfvz /tmp/odo.tar.gz -C /usr/local/bin \
@@ -52,5 +35,3 @@ RUN wget -O /tmp/tkn.tar.gz https://github.com/tektoncd/cli/releases/download/v0
 
 RUN wget -O /usr/local/bin/kn https://github.com/knative/client/releases/download/v0.10.0/kn-linux-amd64 \
     && chmod a+x /usr/local/bin/kn
-    
-USER jboss
