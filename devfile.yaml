@@ -12,9 +12,6 @@ components:
   id: redhat/vscode-openshift-connector/latest
   type: chePlugin
  - 
-  id: redhat/vscode-quarkus/latest
-  type: chePlugin
- - 
   id: redhat/vscode-yaml/latest
   type: chePlugin
  - 
