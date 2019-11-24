@@ -9,7 +9,7 @@ projects:
    location: 'https://github.com/openlab-red/quarkus-workshop-labs'
 components:
  - 
-  id: redhat/vscode-openshift-java-pack/latest
+  id: redhat/vscode-openshift-connector/latest
   type: chePlugin
  - 
   id: redhat/vscode-quarkus/latest
@@ -24,6 +24,12 @@ components:
   type: chePlugin
   id: redhat/java/latest
   memoryLimit: 1512Mi
+ - 
+  id: ms-vscode/go/latest
+  type: chePlugin
+ - 
+  id: che-incubator/theia-dev/latest
+  type: chePlugin
  -
   type: dockerimage
   alias: tools
