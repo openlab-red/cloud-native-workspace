@@ -21,12 +21,6 @@ components:
   type: chePlugin
   id: redhat/java/latest
   memoryLimit: 1512Mi
- - 
-  id: ms-vscode/go/latest
-  type: chePlugin
- - 
-  id: che-incubator/theia-dev/latest
-  type: chePlugin
  -
   type: dockerimage
   alias: tools
