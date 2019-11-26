@@ -7,7 +7,7 @@ RUN wget -O /tmp/odo.tar.gz https://mirror.openshift.com/pub/openshift-v4/client
 	&& chmod +x /usr/local/bin/odo \
         && rm -f /tmp/odo.tar.gz
 
-RUN wget -O /tmp/oc.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest-4.2/openshift-client-linux-4.2.4.tar.gz \
+RUN wget -O /tmp/oc.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest-4.2/openshift-client-linux-4.2.7.tar.gz \
     && tar xvzf /tmp/oc.tar.gz -C /usr/bin \
     && chmod a+x /usr/bin/oc \
     && chmod a+x /usr/bin/kubectl \
@@ -37,5 +37,8 @@ RUN wget -O /tmp/tkn.tar.gz https://github.com/tektoncd/cli/releases/download/v0
 
 RUN wget -O /usr/local/bin/kn https://github.com/knative/client/releases/download/v0.10.0/kn-linux-amd64 \
     && chmod a+x /usr/local/bin/kn
+
+RUN wget -O /usr/local/bin/operator-sdk https://github.com/operator-framework/operator-sdk/releases/download/v0.12.0/operator-sdk-v0.12.0-x86_64-linux-gnu \
+    && chmod a+x /usr/local/bin/operator-sdk
 
 USER jboss 
