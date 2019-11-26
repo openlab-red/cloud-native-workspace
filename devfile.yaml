@@ -21,9 +21,15 @@ components:
   type: chePlugin
   id: redhat/java/latest
   memoryLimit: 1512Mi
+ - 
+  type: dockerimage
+  mountSources: true
+  memoryLimit: 1Gi
+  alias: container-tools
+  image: 'quay.io/openlab-red/container-tools:latest'
  -
   type: dockerimage
-  alias: tools
+  alias: native-tools
   image: 'quay.io/openlab-red/cloud-native-workspace:latest'
   env:
    -
