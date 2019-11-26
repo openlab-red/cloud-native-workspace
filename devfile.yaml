@@ -29,7 +29,7 @@ components:
   image: 'quay.io/openlab-red/container-tools:latest'
  -
   type: dockerimage
-  alias: native-tools
+  alias: tools
   image: 'quay.io/openlab-red/cloud-native-workspace:latest'
   env:
    -
