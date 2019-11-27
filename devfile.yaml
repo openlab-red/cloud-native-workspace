@@ -3,7 +3,7 @@ metadata:
  generateName: quarkus-
 projects:
  -
-  name: quarkus-labs
+  name: quarkus-workshop-labs
   source:
    type: git
    location: 'https://github.com/openlab-red/quarkus-workshop-labs'
